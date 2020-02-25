@@ -1,62 +1,44 @@
 package com.geniusjet.view.game
 
-import androidx.annotation.DrawableRes
+
+import android.os.Handler
 import androidx.compose.Composable
+import androidx.compose.Looper
+import androidx.compose.ambient
 import androidx.compose.unaryPlus
-import androidx.ui.core.dp
-import androidx.ui.graphics.Color
-import androidx.ui.layout.EdgeInsets
-import androidx.ui.layout.Gravity
-import androidx.ui.layout.Row
-import androidx.ui.material.Button
-import androidx.ui.material.ButtonStyle
-import androidx.ui.material.MaterialTheme
-import com.geniusjet.model.ButtonGame
-import com.geniusjet.view.utils.VectorImage
+import androidx.ui.core.ContextAmbient
+import androidx.ui.res.imageResource
+import androidx.ui.tooling.preview.Preview
+import com.geniusjet.data.BoardData
+import com.geniusjet.model.ButtonModel
+import com.geniusjet.view.utils.ImageButton
+import java.util.concurrent.TimeUnit
 
 @Composable
-fun ButtonGenius(
-    id: Int,
-    @DrawableRes vectorId: Int,
-    isPressed: Boolean,
-    action: (() -> Unit)?) {
+fun ButtonJetGenius(button: ButtonModel) {
+    val buttonImage = button.image ?: +imageResource(button.imageId)
+    val buttonPressedImage = button.imagePressed ?: +imageResource(button.imagePressedId)
 
-    return Button(
-        onClick= action,
-        style = ButtonStyle(
-            Color.Transparent, (+MaterialTheme.shapes()).button,
-            paddings = EdgeInsets(0.dp)
-        )
-    ) {
-        Row() {
-            VectorImage(
-                modifier = Gravity.Center,
-                id = vectorId,
-                tint = Color.Transparent
-            )
-        }
+    val runnable = Runnable { button.status.isPressed = false }
+    val action = {
+        button.status.isPressed = true
+
+        val handler = Handler().postDelayed(runnable, 1000)
     }
+
+    val currentButton = if (button.status.isPressed)
+        ImageButton(icon = buttonPressedImage)
+    else
+        ImageButton(icon = buttonImage, onClick = action)
+
+    return currentButton
 }
 
+@Preview
 @Composable
-fun ButtonGenius(button : ButtonGame) {
-    val action = {
+fun ButtonPreview() {
+    val context = +ambient(ContextAmbient)
+    val resources = context.resources
 
-    }
-
-    return Button(
-        onClick= action,
-        style = ButtonStyle(
-            Color.Transparent, (+MaterialTheme.shapes()).button,
-            paddings = EdgeInsets(0.dp)
-        )
-    ) {
-        Row() {
-            VectorImage(
-                modifier = Gravity.Center,
-                id = button.vectorId,
-                tint = Color.Transparent
-            )
-        }
-    }
+    ButtonJetGenius(BoardData[0])
 }
