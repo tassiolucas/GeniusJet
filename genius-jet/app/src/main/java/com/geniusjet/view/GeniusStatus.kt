@@ -9,4 +9,5 @@ sealed class Screen {
 @Model
 object GeniusStatus {
     var currentScreen: Screen = Screen.Game
+    var isPlaying: Boolean = false
 }

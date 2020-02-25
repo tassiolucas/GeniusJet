@@ -13,7 +13,7 @@ import androidx.ui.tooling.preview.Preview
 import com.geniusjet.view.game.GameScreen
 
 @Composable
-fun GeniusApp() {
+fun GeniusContent() {
     val (drawerState, onDrawerStateChange) = +state { DrawerState.Closed }
 
     MaterialTheme {
@@ -40,5 +40,5 @@ private fun AppContent(openDrawer: () -> Unit) {
 @Preview
 @Composable
 fun preview() {
-    GeniusApp()
+    GeniusContent()
 }

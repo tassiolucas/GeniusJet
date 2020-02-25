@@ -1,4 +1,4 @@
-package com.geniusjet.view.utils
+package com.geniusjet.utils
 
 import androidx.compose.Composable
 import androidx.compose.unaryPlus
