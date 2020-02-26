@@ -5,10 +5,7 @@ import androidx.compose.ambient
 import androidx.compose.unaryPlus
 import androidx.ui.core.ContextAmbient
 import androidx.ui.core.dp
-import androidx.ui.foundation.DrawImage
-import androidx.ui.foundation.SimpleImage
 import androidx.ui.layout.*
-import androidx.ui.res.imageResource
 import androidx.ui.tooling.preview.Preview
 import com.geniusjet.data.BoardData
 

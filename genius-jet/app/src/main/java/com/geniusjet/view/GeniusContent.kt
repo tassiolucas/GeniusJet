@@ -20,6 +20,7 @@ fun GeniusContent() {
         ModalDrawerLayout(
             drawerState = drawerState,
             onStateChange = onDrawerStateChange,
+            gesturesEnabled = false,
             drawerContent = {},
             bodyContent = { AppContent { onDrawerStateChange(DrawerState.Opened) } }
         )
