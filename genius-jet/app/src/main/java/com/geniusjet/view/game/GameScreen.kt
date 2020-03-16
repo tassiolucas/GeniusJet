@@ -1,49 +1,48 @@
 package com.geniusjet.view.game
 
 import androidx.compose.Composable
-import androidx.compose.ambient
-import androidx.compose.unaryPlus
-import androidx.ui.core.ContextAmbient
-import androidx.ui.core.dp
 import androidx.ui.layout.*
 import androidx.ui.tooling.preview.Preview
+import androidx.ui.unit.Dp
+import androidx.ui.unit.dp
+import com.geniusjet.GeniusApp.Companion.context
 import com.geniusjet.data.BoardData
 
 @Composable
 fun GameScreen() {
-    Column(modifier = Expanded) {
-        HeightSpacer(height = 100.dp)
-        Container(modifier = ExpandedWidth) {
+    Column() {
+        Spacer(modifier = LayoutPadding(top = 100.dp))
+        Container() {
             Board()
         }
     }
 }
 
 @Composable
-fun Board() {
+fun Board(aditionalPadding: Dp = Dp(0F)) {
     val data = BoardData
     val padding = 5.dp
 
-    Column(modifier = Spacing(padding)) {
-        Row(modifier = Spacing(bottom = padding)) {
-            Container(modifier = Spacing(left = padding, right = padding)) {
+    Column(modifier = LayoutPadding(padding)) {
+        Row(modifier = LayoutPadding(bottom = padding + aditionalPadding)) {
+            Container(modifier = LayoutPadding(start = padding + (aditionalPadding / 2) , end = padding + (aditionalPadding / 2))) {
                 ButtonJetGenius(
                     button = data[0]
                 )
             }
-            Container(modifier = Spacing(left = padding, right = padding)) {
+            Container(modifier = LayoutPadding(start = padding + (aditionalPadding / 2), end = padding + (aditionalPadding / 2))) {
                 ButtonJetGenius(
                     button = data[1]
                 )
             }
         }
-        Row(modifier = Spacing(top = padding)) {
-            Container(modifier = Spacing(left = padding, right = padding)) {
+        Row(modifier = LayoutPadding(top = padding)) {
+            Container(modifier = LayoutPadding(start = padding + (aditionalPadding / 2), end = padding + (aditionalPadding / 2))) {
                 ButtonJetGenius(
                     button = data[2]
                 )
             }
-            Container(modifier = Spacing(left = padding, right = padding)) {
+            Container(modifier = LayoutPadding(start = padding + (aditionalPadding / 2), end = padding + (aditionalPadding / 2))) {
                 ButtonJetGenius(
                     button = data[3]
                 )
@@ -55,8 +54,5 @@ fun Board() {
 @Preview
 @Composable
 fun GameScreenPreview() {
-    val context = +ambient(ContextAmbient)
-    val resources = context.resources
-
     GameScreen()
 }

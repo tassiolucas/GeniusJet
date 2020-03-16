@@ -2,7 +2,6 @@ package com.geniusjet.view
 
 import androidx.compose.Composable
 import androidx.compose.state
-import androidx.compose.unaryPlus
 import androidx.ui.animation.Crossfade
 import androidx.ui.graphics.Color
 import androidx.ui.material.DrawerState
@@ -14,7 +13,7 @@ import com.geniusjet.view.game.GameScreen
 
 @Composable
 fun GeniusContent() {
-    val (drawerState, onDrawerStateChange) = +state { DrawerState.Closed }
+    val (drawerState, onDrawerStateChange) = state { DrawerState.Closed }
 
     MaterialTheme {
         ModalDrawerLayout(
@@ -32,6 +31,7 @@ private fun AppContent(openDrawer: () -> Unit) {
     Crossfade(GeniusStatus.currentScreen) { screen ->
         Surface(color = Color.DarkGray) {
             when (screen) {
+                is Screen.StartScreen -> StartScreen()
                 is Screen.Game -> GameScreen()
             }
         }

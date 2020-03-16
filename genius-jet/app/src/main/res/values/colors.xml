@@ -8,4 +8,7 @@
 
     <color name="blueStart">#4566B3</color>
     <color name="blueEnd">#263A65</color>
+
+    <color name="startButtonColor">#8B2524</color>
+    <color name="startButtonBorderColor">#7D2A29</color>
 </resources>

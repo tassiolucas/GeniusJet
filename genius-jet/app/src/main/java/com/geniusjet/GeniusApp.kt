@@ -1,7 +1,7 @@
 package com.geniusjet
 
 import android.app.Application
-import androidx.compose.Context
+import android.content.Context
 
 class GeniusApp : Application() {
 
