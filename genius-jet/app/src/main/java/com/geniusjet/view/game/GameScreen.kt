@@ -1,6 +1,12 @@
 package com.geniusjet.view.game
 
 import androidx.compose.Composable
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import androidx.ui.layout.*
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.Dp

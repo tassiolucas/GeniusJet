@@ -1,9 +1,10 @@
 package com.geniusjet.view.game
 
 import android.os.Handler
-import androidx.compose.Composable
-import androidx.ui.res.imageResource
-import androidx.ui.tooling.preview.Preview
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.content.res.ResourcesCompat
 import com.geniusjet.data.BoardData
 import com.geniusjet.model.ButtonModel
 import com.geniusjet.utils.AudioPlayer
@@ -12,8 +13,8 @@ import com.geniusjet.view.GeniusStatus.isPlaying
 
 @Composable
 fun ButtonJetGenius(button: ButtonModel) {
-    val buttonImage = imageResource(button.imageId)
-    val buttonPressedImage = imageResource(button.imagePressedId)
+    val buttonImage = painterResource(id = button.imageId)
+    val buttonPressedImage = painterResource(id = button.imagePressedId)
 
     val runnable = Runnable { button.status.isPressed = false }
     val action = {
@@ -25,7 +26,7 @@ fun ButtonJetGenius(button: ButtonModel) {
     }
 
     return if (button.status.isPressed)
-        ImageButton(icon = buttonPressedImage)
+        ImageButton(icon = buttonPressedImage) { }
     else
         ImageButton(icon = buttonImage, onClick = action)
 }

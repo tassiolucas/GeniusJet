@@ -1,14 +1,8 @@
 package com.geniusjet.view
 
-import androidx.compose.Composable
-import androidx.compose.state
-import androidx.ui.animation.Crossfade
-import androidx.ui.graphics.Color
-import androidx.ui.material.DrawerState
-import androidx.ui.material.MaterialTheme
-import androidx.ui.material.ModalDrawerLayout
-import androidx.ui.material.surface.Surface
-import androidx.ui.tooling.preview.Preview
+import androidx.compose.material.MaterialTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
 import com.geniusjet.view.game.GameScreen
 
 @Composable

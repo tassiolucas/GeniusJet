@@ -1,7 +1,5 @@
 package com.geniusjet.model
 
-import androidx.compose.Model
-
 data class ButtonModel (
     val id : Int,
     val imageId : Int,
@@ -10,7 +8,6 @@ data class ButtonModel (
     var status: Status
 )
 
-@Model
-class Status {
+data class Status(
     var isPressed : Boolean = false
-}
+)

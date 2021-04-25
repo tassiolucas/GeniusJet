@@ -1,29 +1,30 @@
 package com.geniusjet.utils
 
-import androidx.compose.Composable
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.Clickable
-import androidx.ui.foundation.SimpleImage
-import androidx.ui.graphics.Color
-import androidx.ui.graphics.Image
-import androidx.ui.layout.Container
-import androidx.ui.layout.DpConstraints
-import androidx.ui.material.MaterialTheme
-import androidx.ui.material.surface.Surface
-import androidx.ui.unit.dp
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun ImageButton(
-    icon: Image,
-    modifier: Modifier = Modifier.None,
-    onClick: (() -> Unit)? = null
+    icon: Painter,
+    onClick: () -> Unit
 ) {
-    Surface(modifier = modifier, shape = (MaterialTheme.shapes()).card, color = Color.Transparent, elevation = 0.dp) {
-        Clickable(onClick = onClick) {
-            Container(constraints = DpConstraints(minWidth = minSize, minHeight = minSize)) {
-                SimpleImage(image = icon)
-            }
-        }
+    Surface(
+        shape = MaterialTheme.shapes.small,
+        color = Color.Transparent,
+        elevation = 0.dp,
+        modifier = Modifier.clickable(onClick = onClick)
+    ) {
+        Image(
+            painter = icon,
+            contentDescription = null
+        )
     }
 }
 
